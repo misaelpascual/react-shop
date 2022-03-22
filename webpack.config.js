@@ -5,9 +5,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   entry: './src/index.js',
 	output: {
-		path: path.resolve(__dirname, 'build'),
+		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
-		publicPath: '/'
+		publicPath: './'
 	},
 	mode: 'development',
 	resolve: {
@@ -68,7 +68,10 @@ module.exports = {
     )
   ],
   devServer: {
-    allowedHosts: path.join(__dirname, 'build'),
+		static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    allowedHosts: path.join(__dirname, 'dist'),
     // contentBase corresponde a webpack 4
     // ahora en Webpack 5 se usa allowedHosts
     compress: true,
